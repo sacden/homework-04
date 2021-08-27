@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 
-const Counter = () => {
-  const [count, setCount] = useState(1);
+const Counter = (props) => {
   const tags = ["tag1", "tag2", "tag3"];
 
-  const formCount = () => {
-    return count === 0 ? "Ноль" : count;
+  const formValue = () => {
+    return props.value === 0 ? "Ноль" : props.value;
   };
 
-  const getBageclasses = () => {
+  const getBageСlasses = () => {
     let classes = "badge m-2 bg-";
-    classes += count === 0 ? "danger" : "primary";
+    classes += props.value === 0 ? "danger" : "primary";
     return classes;
   };
 
@@ -19,25 +18,20 @@ const Counter = () => {
     return tags.map((tag) => <li key={tag}>{tag}</li>);
   };
 
-  const handleIncrement = () => {
-    setCount(count + 1);
-  };
-
-  const handleDecrement = () => {
-    count > 0 && setCount(count - 1);
-  };
-
   return (
-    <>
-      {renderTags()}
-      <span className={getBageclasses()}>{formCount()}</span>
-      <button onClick={handleIncrement} className="btn btn-secondary btn-sm">
+    <div>
+      <h4>{props.name}</h4>
+      <span className={getBageСlasses()}>{formValue()}</span>
+      <button onClick={() => props.onIncrement(props.id)} className="btn btn-secondary btn-sm">
         Increment
       </button>
-      <button onClick={handleDecrement} className="btn btn-secondary btn-sm">
+      <button onClick={() => props.onDecrement(props.id)} className="btn btn-secondary btn-sm">
         Decrement
       </button>
-    </>
+      <button className="btn btn-danger btn-sm m-2" onClick={() => props.onDelete(props.id)}>
+        Delete
+      </button>
+    </div>
   );
 };
 
