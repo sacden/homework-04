@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import App from "./app";
 import Counters from "./components/counters";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 
 ReactDOM.render(
   <React.Fragment>
-    <Counters />
+    <App />
   </React.Fragment>,
   document.getElementById("root")
 );

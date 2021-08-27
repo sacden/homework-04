@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-const Counter = (props) => {
+const Counter = ({ id, value, name, onIncrement, onDecrement, onDelete }) => {
   const tags = ["tag1", "tag2", "tag3"];
 
   const formValue = () => {
-    return props.value === 0 ? "Ноль" : props.value;
+    return value === 0 ? "Ноль" : value;
   };
 
   const getBageСlasses = () => {
     let classes = "badge m-2 bg-";
-    classes += props.value === 0 ? "danger" : "primary";
+    classes += value === 0 ? "danger" : "primary";
     return classes;
   };
 
@@ -20,15 +20,15 @@ const Counter = (props) => {
 
   return (
     <div>
-      <h4>{props.name}</h4>
+      <h4>{name}</h4>
       <span className={getBageСlasses()}>{formValue()}</span>
-      <button onClick={() => props.onIncrement(props.id)} className="btn btn-secondary btn-sm">
+      <button onClick={() => onIncrement(id)} className="btn btn-secondary btn-sm">
         Increment
       </button>
-      <button onClick={() => props.onDecrement(props.id)} className="btn btn-secondary btn-sm">
+      <button onClick={() => onDecrement(id)} className="btn btn-secondary btn-sm">
         Decrement
       </button>
-      <button className="btn btn-danger btn-sm m-2" onClick={() => props.onDelete(props.id)}>
+      <button className="btn btn-danger btn-sm m-2" onClick={() => onDelete(id)}>
         Delete
       </button>
     </div>
